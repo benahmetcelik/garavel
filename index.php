@@ -1,18 +1,32 @@
 <?php
 require 'vendor/autoload.php';
 require 'Core/core.php';
+
 use App\Classes\Handler;
 use App\Classes\Request;
-use App\Classes\Router;
+use Core\Router\Router;
+
 
 define('PROCESS_START', microtime(true));
-ini_set('display_errors', 1);
+ini_set('display_errors', false);
 
-$request = new Request();
-$routes = new Router($request);
+
+$router = new Router();
 $handler = new Handler();
 
-$handler->terminate(function () use ($routes) {
-    return $routes->callAction();
-});
+try {
+    $handler->terminate(function () use ($router) {
+        return $router->callAction();
+    });
+} catch (Exception $e) {
+    $handler->log([
+        'message' => $e->getMessage(),
+        'code' => $e->getCode(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ]);
+
+}
+
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
+
+use Core\Controllers\BaseController;
 
 class Test2Controller extends BaseController
 {

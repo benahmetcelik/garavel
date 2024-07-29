@@ -1,8 +1,10 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 
+
+use Core\Controllers\BaseController;
 
 class TestController extends BaseController
 {
@@ -16,6 +18,16 @@ class TestController extends BaseController
     public function getTest()
     {
         return view('pages.home', ['name' => 'Test']);
+    }
+
+
+    /**
+     * @throws \Exception
+     */
+    public function getTemplate()
+    {
+        return template('HomeTemplate', ['name' => 'Test']);
+
     }
 
 }

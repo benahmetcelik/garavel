@@ -11,6 +11,8 @@
   },
   "require": {
     "guzzlehttp/guzzle": "^7.9",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-simplexml": "*"
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Core\Controllers;
 
 use ReflectionMethod;
 
@@ -22,18 +22,28 @@ class BaseController
     public function getRoutes(): array
     {
         $thisClassFunctions = get_class_methods($this);
-        unset($thisClassFunctions[array_search('getRoutes', $thisClassFunctions)]);
+        $availableMethods = $this->hiddenMethods($thisClassFunctions);
         $routes = [];
-        foreach ($thisClassFunctions as $function) {
+        foreach ($availableMethods as $function) {
             $method = $this->findMethod($function);
             if (!$method) {
                 continue;
             }
             $routes[] = $this->setRoute($function);
         }
-
         return $routes;
+    }
 
+    public function hiddenMethods($methods = [])
+    {
+        $hiddenMethods = ['getRoutes', 'getTemplate'];
+        foreach ($hiddenMethods as $hiddenMethod) {
+            $key = array_search($hiddenMethod, $methods);
+            if ($key !== false) {
+                unset($methods[$key]);
+            }
+        }
+        return $methods;
     }
 
 
@@ -58,10 +68,12 @@ class BaseController
     {
         $method = new ReflectionMethod($this, $function);
         $parameters = $method->getParameters();
+        $prefix = $this->prefix ? '/' . $this->prefix . '/' : '/';
+        $url = $prefix . $this->camelToKebab(
+                $this->removeMethodOnTheFunc($function)
+            );
         return [
-            'url' => '/'.$this->prefix . '/' . $this->camelToKebab(
-                    $this->removeMethodOnTheFunc($function)
-                ),
+            'url' => $url,
             'function' => $function,
             'params' => array_map(function ($param) {
                 return $param->getName();
@@ -69,6 +81,7 @@ class BaseController
             'paramCount' => count($parameters),
             'method' => $this->findMethod($function),
             'controller' => get_class($this),
+            'full_url' => config('app.url') . $url
         ];
     }
 

@@ -4,3 +4,4 @@ Storage/Session/*
 composer.lock
 vendor/*
 .idea/*
+Logs/*
