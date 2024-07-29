@@ -1,0 +1,55 @@
+time : [2024-07-26 23:06:37]:
+message : View not found
+code : 0
+file : /opt/lampp/htdocs/Classes/View.php
+line : 14
+trace : #0 /opt/lampp/htdocs/helpers.php(21): Classes\View->show('layout', Array)
+#1 /opt/lampp/htdocs/Controllers/TestController.php(18): show('layout', Array)
+#2 /opt/lampp/htdocs/Classes/Router.php(66): Controllers\TestController->getTest(Array, NULL)
+#3 /opt/lampp/htdocs/index.php(17): Classes\Router->callAction()
+#4 /opt/lampp/htdocs/Classes/Handler.php(10): {closure}()
+#5 /opt/lampp/htdocs/index.php(18): Classes\Handler->terminate(Object(Closure))
+#6 {main}
+=============================================
+time : [2024-07-26 23:07:33]:
+message : View not found
+code : 0
+file : /opt/lampp/htdocs/Classes/View.php
+line : 37
+trace : #0 /opt/lampp/htdocs/Classes/View.php(15): Classes\View->findView('layout')
+#1 /opt/lampp/htdocs/helpers.php(21): Classes\View->show('layout', Array)
+#2 /opt/lampp/htdocs/Controllers/TestController.php(18): show('layout', Array)
+#3 /opt/lampp/htdocs/Classes/Router.php(66): Controllers\TestController->getTest(Array, NULL)
+#4 /opt/lampp/htdocs/index.php(17): Classes\Router->callAction()
+#5 /opt/lampp/htdocs/Classes/Handler.php(10): {closure}()
+#6 /opt/lampp/htdocs/index.php(18): Classes\Handler->terminate(Object(Closure))
+#7 {main}
+=============================================
+time : [2024-07-26 23:07:53]:
+message : View not found
+code : 0
+file : /opt/lampp/htdocs/Classes/View.php
+line : 38
+trace : #0 /opt/lampp/htdocs/Classes/View.php(15): Classes\View->findView('layout')
+#1 /opt/lampp/htdocs/helpers.php(21): Classes\View->show('layout', Array)
+#2 /opt/lampp/htdocs/Controllers/TestController.php(18): show('layout', Array)
+#3 /opt/lampp/htdocs/Classes/Router.php(66): Controllers\TestController->getTest(Array, NULL)
+#4 /opt/lampp/htdocs/index.php(17): Classes\Router->callAction()
+#5 /opt/lampp/htdocs/Classes/Handler.php(10): {closure}()
+#6 /opt/lampp/htdocs/index.php(18): Classes\Handler->terminate(Object(Closure))
+#7 {main}
+=============================================
+time : [2024-07-26 23:08:37]:
+message : View not found
+code : 0
+file : /opt/lampp/htdocs/Classes/View.php
+line : 39
+trace : #0 /opt/lampp/htdocs/Classes/View.php(15): Classes\View->findView('layout')
+#1 /opt/lampp/htdocs/helpers.php(21): Classes\View->show('layout', Array)
+#2 /opt/lampp/htdocs/Controllers/TestController.php(18): show('layout', Array)
+#3 /opt/lampp/htdocs/Classes/Router.php(66): Controllers\TestController->getTest(Array, NULL)
+#4 /opt/lampp/htdocs/index.php(17): Classes\Router->callAction()
+#5 /opt/lampp/htdocs/Classes/Handler.php(10): {closure}()
+#6 /opt/lampp/htdocs/index.php(18): Classes\Handler->terminate(Object(Closure))
+#7 {main}
+=============================================

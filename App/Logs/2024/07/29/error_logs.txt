@@ -1,0 +1,368 @@
+time : [2024-07-29 11:57:42]:
+message : View [pages.home] not found.
+code : 0
+file : /var/www/html/vendor/illuminate/view/FileViewFinder.php
+line : 139
+trace : #0 /var/www/html/vendor/illuminate/view/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths('pages.home', Array)
+#1 /var/www/html/vendor/illuminate/view/Factory.php(151): Illuminate\View\FileViewFinder->find('pages.home')
+#2 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#3 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#4 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#5 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#6 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#7 /var/www/html/App/Classes/Handler.php(10): {closure}()
+#8 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#9 {main}
+=============================================
+time : [2024-07-29 11:58:22]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(10): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:41]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:41]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:42]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:42]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:42]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:42]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:42]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:43]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:43]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:44]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:44]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:44]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:44]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:45]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
+time : [2024-07-29 12:01:45]:
+message : Target class [blade.compiler] does not exist.
+code : 0
+file : /var/www/html/vendor/illuminate/container/Container.php
+line : 940
+trace : #0 /var/www/html/vendor/illuminate/container/Container.php(815): Illuminate\Container\Container->build('blade.compiler')
+#1 /var/www/html/vendor/illuminate/container/Container.php(751): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#2 /var/www/html/vendor/illuminate/view/ViewServiceProvider.php(168): Illuminate\Container\Container->make('blade.compiler')
+#3 [internal function]: Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}()
+#4 /var/www/html/vendor/illuminate/view/Engines/EngineResolver.php(55): call_user_func(Object(Closure))
+#5 /var/www/html/vendor/illuminate/view/Factory.php(326): Illuminate\View\Engines\EngineResolver->resolve('blade')
+#6 /var/www/html/vendor/illuminate/view/Factory.php(288): Illuminate\View\Factory->getEngineFromPath('/var/www/html/A...')
+#7 /var/www/html/vendor/illuminate/view/Factory.php(160): Illuminate\View\Factory->viewInstance('pages.home', '/var/www/html/A...', Array)
+#8 /var/www/html/vendor/jenssegers/blade/src/Blade.php(52): Illuminate\View\Factory->make('pages.home', Array, Array)
+#9 /var/www/html/helpers.php(33): Jenssegers\Blade\Blade->make('pages.home', Array)
+#10 /var/www/html/App/Controllers/TestController.php(18): view('pages.home', Array)
+#11 /var/www/html/App/Classes/Router.php(67): Controllers\TestController->getTest(Array, NULL)
+#12 /var/www/html/index.php(18): App\Classes\Router->callAction()
+#13 /var/www/html/App/Classes/Handler.php(14): {closure}()
+#14 /var/www/html/index.php(17): App\Classes\Handler->terminate(Object(Closure))
+#15 {main}
+=============================================
