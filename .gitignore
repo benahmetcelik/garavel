@@ -1,0 +1,6 @@
+Storage/Logs/*
+Storage/Cache/*
+Storage/Session/*
+composer.lock
+vendor/*
+.idea/*
