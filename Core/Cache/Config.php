@@ -1,20 +1,15 @@
 <?php
 
-namespace Core\Cache\Base;
+namespace Core\Cache;
 
-class Cache implements ICacheInterface
+use Core\Cache\Base\ICacheInterface;
+
+class Config implements ICacheInterface
 {
-    public $cached;
 
     public function __construct()
     {
-        $this->cached = [];
-    }
-
-    public function loadCachedData()
-    {
-        $config = require_once storage_path('Cache/configs.php');
-        $this->cached = $config;
+        $this->cached = require_once storage_path('Cache/configs.php');
     }
 
     public function set($key, $value, $time = 0)

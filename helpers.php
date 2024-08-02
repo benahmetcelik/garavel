@@ -65,9 +65,9 @@ function public_path()
     return base_path() . 'Public/';
 }
 
-function storage_path()
+function storage_path($path = null)
 {
-    return base_path() . 'Storage/';
+    return base_path() . 'Storage/'. $path;
 }
 
 function app_path($path = null)

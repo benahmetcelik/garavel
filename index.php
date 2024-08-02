@@ -4,13 +4,14 @@ require 'Core/core.php';
 
 use App\Classes\Handler;
 use App\Classes\Request;
+use Core\Cache\Base\Cache;
 use Core\Router\Router;
 
 
 define('PROCESS_START', microtime(true));
 ini_set('display_errors', false);
 
-
+$cache = new Cache();
 $router = new Router();
 $handler = new Handler();
 
