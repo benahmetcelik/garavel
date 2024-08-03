@@ -18,15 +18,9 @@ class TestController extends BaseController
     public function getTest()
     {
 
-        $query = QueryBuilder::select('users', ['id', 'name', 'email']);
-        $query->where('id', '=', 1);
-        $result = $query->get();
-        return $result;
+        $query = QueryBuilder::select(['id', 'name', 'email'],'users')->get();
 
-//        $newQueryBuilder->select('users', ['id', 'name', 'email']);
-//        $newQueryBuilder->where('id', '=', 1);
-//        $result = $newQueryBuilder->get();
-//        return $result;
+        return response()->success($query)->send();
         return view('pages.home', ['name' => 'Test']);
     }
 

@@ -13,11 +13,11 @@ class Handler
         try {
             $callback();
             if ($this->dbIsConnected()) {
-                $this->findAndDestroyDatabaseConnection();
+//                $this->findAndDestroyDatabaseConnection();
             }
         } catch (\Exception $e) {
             if ($this->dbIsConnected()) {
-                $this->findAndDestroyDatabaseConnection();
+//                $this->findAndDestroyDatabaseConnection();
             }
             $response = new Response();
             $this->log([
@@ -27,8 +27,8 @@ class Handler
                 'line' => $e->getLine(),
                 'trace' => $e->getTraceAsString()
             ]);
-            $response = $response->error($e->getMessage(), $e->getCode());
-            die($response);
+            $response->error($e->getMessage(), $e->getCode())
+                ->send();
         }
     }
 

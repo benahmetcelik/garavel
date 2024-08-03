@@ -75,6 +75,11 @@ function app_path($path = null)
     return base_path() . 'App/' . $path;
 }
 
+function core_path($path = null)
+{
+    return base_path() . 'Core/' . $path;
+}
+
 /**
  * @param $path
  * @return string
@@ -115,4 +120,10 @@ function config($path, $default = null)
     return $config[$key];
 
 
+}
+
+
+function response()
+{
+    return new \App\Classes\Response();
 }

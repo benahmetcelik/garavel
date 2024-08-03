@@ -18,8 +18,12 @@ class PgsqlConnector
         $this->connect();
     }
 
-    public function connect(): static
+    public function connect(): PgsqlConnector
     {
+
+        if (isset($this->connection)) {
+            return $this;
+        }
         $configs = config('database.pgsql');
         $string = 'host=' . $configs['host'] . ' port=' . $configs['port'] . ' dbname=' . $configs['database'] . ' user=' . $configs['username'] . ' password=' . $configs['password'];
         $this->connection = pg_connect($string);
@@ -42,13 +46,17 @@ class PgsqlConnector
     /**
      * @throws \Exception
      */
-    public function select($sql): \PgSql\Result|bool
+    public function select($sql)
     {
-        $this->query = pg_query($this->connection, $sql);
-        if (!$this->query) {
-            throw new \Exception('Could not query Pgsql');
+        try {
+            $this->query = pg_query($this->connection, $sql);
+            if (!$this->query) {
+                throw new \Exception('Could not query Pgsql: ' . pg_last_error($this->connection));
+            }
+            return $this;
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
         }
-        return $this->query;
     }
 
     public function fetch($query = null): bool|array

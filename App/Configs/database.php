@@ -8,10 +8,10 @@ return [
 
 
     'pgsql'=>[
-        'host'=>'localhost',
+        'host'=>'db',
         'port'=>'5432',
-        'database'=>'test',
-        'username'=>'postgres',
-        'password'=>'123456'
+        'database'=>'postgresql',
+        'username'=>'postgresql',
+        'password'=>'postgresql'
     ]
 ];

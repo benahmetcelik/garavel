@@ -40,7 +40,7 @@ class BaseDatabase implements IDatabaseInterface
     /**
      * @throws \Exception
      */
-    public function findDatabaseClass(): callable
+    public function findDatabaseClass()
     {
         try {
             $driver = $this->getConnectionConfigs()['driver'];
@@ -59,7 +59,6 @@ class BaseDatabase implements IDatabaseInterface
             $this->dbConnected();
             return new $class();
         } catch (\Throwable $e) {
-            $this->dbDisconnected();
             throw new \Exception($e->getMessage());
         }
     }

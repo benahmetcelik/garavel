@@ -8,7 +8,7 @@ class QueryBuilder extends BaseDatabase
 {
 
     public $table;
-    public $query;
+    public $query_string = '';
 
     public $database;
 
@@ -26,24 +26,31 @@ class QueryBuilder extends BaseDatabase
 
     public static function select($full_query_or_columns = '*', $table = null)
     {
-        $query = new QueryBuilder();
+        $query = new static;
+
         if (is_null($table)) {
             $table = $query->table;
+        }else{
+            $query->table = $table;
         }
+
         if (is_array($full_query_or_columns)) {
+            $full_query_or_columns = array_map(function ($column) {
+                return '"' . $column . '"';
+            }, $full_query_or_columns);
             $full_query_or_columns = implode(',', $full_query_or_columns);
         }
 
         if ($full_query_or_columns == '*') {
             $full_query_or_columns = '*';
-        } else {
-            $full_query_or_columns = implode(',', $full_query_or_columns);
         }
+
         if (is_null($table)) {
-            $query->query = 'SELECT ' . $full_query_or_columns;
+            $query->query_string = 'SELECT ' . $full_query_or_columns;
         } else {
-            $query->query = 'SELECT ' . $full_query_or_columns . ' FROM ' . $table;
+            $query->query_string = 'SELECT ' . $full_query_or_columns . ' FROM ' . $table;
         }
+
         return $query;
     }
 
@@ -60,7 +67,7 @@ class QueryBuilder extends BaseDatabase
             $value = $operator;
             $operator = '=';
         }
-        $this->query .= ' WHERE ' . $column . ' ' . $operator . ' ' . $value;
+        $this->query_string .= ' WHERE ' . $column . ' ' . $operator . ' ' . $value;
         return $this;
     }
 
@@ -70,7 +77,7 @@ class QueryBuilder extends BaseDatabase
             $value = $operator;
             $operator = '=';
         }
-        $this->query .= ' AND ' . $column . ' ' . $operator . ' ' . $value;
+        $this->query_string .= ' AND ' . $column . ' ' . $operator . ' ' . $value;
         return $this;
     }
 
@@ -80,28 +87,28 @@ class QueryBuilder extends BaseDatabase
             $value = $operator;
             $operator = '=';
         }
-        $this->query .= ' OR ' . $column . ' ' . $operator . ' ' . $value;
+        $this->query_string .= ' OR ' . $column . ' ' . $operator . ' ' . $value;
         return $this;
     }
 
     public function first()
     {
-        return $this->database->select($this->query)->fetch();
+        return $this->database->select($this->query_string)->fetch();
     }
 
     public function get()
     {
-        return $this->database->select($this->query)->fetchAll();
+        return $this->database->select($this->query_string)->fetchAll();
     }
 
     public function find($id)
     {
-        return $this->database->select($this->query . ' WHERE id = ' . $id)->fetch();
+        return $this->database->select($this->query_string . ' WHERE id = ' . $id)->fetch();
     }
 
     public function onlyThisColumns($columns = [])
     {
-        $this->query = str_replace('*', implode(',', $columns), $this->query);
+        $this->query_string = str_replace('*', implode(',', $columns), $this->query_string);
         return $this;
     }
 
@@ -119,15 +126,20 @@ class QueryBuilder extends BaseDatabase
         $sql .= implode(',', array_map(function ($key, $value) {
             return $key . ' = ' . $value;
         }, array_keys($data), array_values($data)));
-        $sql .= $this->query;
+        $sql .= $this->query_string;
         return $this->database->query($sql);
     }
 
     public function delete()
     {
-        $sql = 'DELETE FROM ' . $this->table . $this->query;
+        $sql = 'DELETE FROM ' . $this->table . $this->query_string;
         return $this->database->query($sql);
 
+    }
+
+    public function getSql()
+    {
+        return $this->query_string;
     }
 
 
