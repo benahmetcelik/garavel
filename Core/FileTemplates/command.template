@@ -4,20 +4,20 @@ namespace App\Commands;
 
 use Core\Commands\Base\BaseCommand;
 
-class PingCommand extends BaseCommand
+class [CommandName] extends BaseCommand
 {
 
     /**
      * Your command signature
      * @var string Command signature
      */
-    public $signature = 'ping';
+    public $signature = 'example-signature';
 
     /**
      * Your command description
      * @var string Command description
      */
-    public $description = 'Ping command';
+    public $description = 'Your command description';
 
     /**
      * Your command handler
@@ -25,7 +25,7 @@ class PingCommand extends BaseCommand
      */
     public function run()
     {
-        echo 'PONG';
+        echo 'Hello';
     }
 
 }

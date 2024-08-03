@@ -10,12 +10,17 @@ class Runner
 
     #[NoReturn] public function __construct($argv = null,$options = null)
     {
+
         $runStatus = 0;
         $this->loadSystemCommands();
         $this->loadCustomCommands();
         $command = $this->findCommand($argv);
         if ($command) {
-           $runStatus = $command->run($options);
+            try {
+                $runStatus = $command->run($options);
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
             echo "\n";
         } else {
             echo "Command not found\n";
@@ -56,10 +61,17 @@ class Runner
             if ($file == '.' || $file == '..') {
                 continue;
             }
+            if (is_dir($commandsPath . $file)) {
+                $this->loadCommands($commandsPath . $file . '/', $namespace . $file . '\\');
+                continue;
+            }
             $commandFile = require_once $commandsPath . $file;
             $callClass = $namespace. str_replace('.php', '', $file);
             $command = new $callClass;
-            $this->commands[$command->signature] = $command;
+            $signature = $command->signature;
+            $signature = explode(' ', $signature);
+            $signature = $signature[0];
+            $this->commands[$signature] = $command;
         }
     }
 
