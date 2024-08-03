@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd mbstring pdo pdo_pgsql zip
+    && docker-php-ext-install gd mbstring pdo pdo_pgsql pgsql zip
 
 # Composer (PHP bağımlılık yöneticisi) kurulum
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

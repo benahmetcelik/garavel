@@ -42,7 +42,7 @@ class Response
     {
         header('Content-Type: application/json');
         http_response_code($status);
-        echo json_encode([
+        return json_encode([
             'status' => $status,
             'message' => $message
         ]);

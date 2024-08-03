@@ -3,25 +3,46 @@
 namespace App\Classes;
 
 
+use Core\Database\Base\BaseDatabase;
+
 class Handler
 {
+
     public function terminate($callback)
     {
         try {
-            echo $callback();
+            $callback();
+            if ($this->dbIsConnected()) {
+                $this->findAndDestroyDatabaseConnection();
+            }
         } catch (\Exception $e) {
+            if ($this->dbIsConnected()) {
+                $this->findAndDestroyDatabaseConnection();
+            }
             $response = new Response();
-                $this->log([
-                    'message' => $e->getMessage(),
-                    'code' => $e->getCode(),
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                    'trace' => $e->getTraceAsString()
-                ]);
-            $response->error($e->getMessage(), $e->getCode());
+            $this->log([
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            $response = $response->error($e->getMessage(), $e->getCode());
+            die($response);
         }
     }
 
+
+    public function dbIsConnected(): bool
+    {
+        return $GLOBALS['dbIsConnected'] ?? false;
+    }
+
+    public function findAndDestroyDatabaseConnection(): void
+    {
+        $db = new BaseDatabase();
+        $db->disconnect();
+    }
 
 
     public function log($data, $file = null)
