@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Database\Queries;
 
 use Core\Database\Drivers\Base\BaseDatabase;
 

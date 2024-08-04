@@ -2,7 +2,7 @@
 
 namespace Core\Models\Base;
 
-use Core\QueryBuilder;
+use Core\Database\Queries\QueryBuilder;
 
 class BaseModel extends QueryBuilder
 {

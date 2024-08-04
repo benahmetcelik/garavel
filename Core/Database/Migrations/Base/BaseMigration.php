@@ -2,7 +2,7 @@
 
 namespace Core\Database\Migrations\Base;
 
-use Core\QueryBuilder;
+use Core\Database\Queries\QueryBuilder;
 
 class BaseMigration
 {

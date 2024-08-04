@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use Core\Controllers\BaseController;
-use Core\QueryBuilder;
 
 class TestController extends BaseController
 {
