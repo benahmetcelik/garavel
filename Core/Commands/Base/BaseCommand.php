@@ -45,4 +45,45 @@ class BaseCommand implements IBaseCommandInterface
         $this->options = $options;
         return $options;
     }
+
+
+    public function createFile($path, $content)
+    {
+        $this->dirCheck($path);
+        $createCommand = fopen(app_path($path), 'w');
+        fwrite($createCommand, $content);
+        fclose($createCommand);
+    }
+
+    public function getTemplateContent($path)
+    {
+        $openTemplate = fopen($path, 'r');
+        $content = fread($openTemplate, filesize($path));
+        return $content;
+    }
+
+    public function changeContent($key, $value, $content)
+    {
+        return str_replace($key, $value, $content);
+    }
+
+    public function cleanName($name)
+    {
+        $name = ucfirst($name);
+        $name = str_replace(' ', '', $name);
+        $name = str_replace(':', '', $name);
+        return $name;
+    }
+
+
+    public function dirCheck($path)
+    {
+
+        $path = str_replace('\\', '/', $path);
+        $path = pathinfo($path)['dirname'];
+        if (!file_exists(app_path($path))){
+            mkdir(app_path($path), 0777, true);
+
+        }
+    }
 }
