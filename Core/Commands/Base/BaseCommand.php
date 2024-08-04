@@ -2,6 +2,8 @@
 
 namespace Core\Commands\Base;
 
+use Core\Commands\Helpers\ConsoleTable;
+
 class BaseCommand implements IBaseCommandInterface
 {
 
@@ -53,6 +55,7 @@ class BaseCommand implements IBaseCommandInterface
         $createCommand = fopen(app_path($path), 'w');
         fwrite($createCommand, $content);
         fclose($createCommand);
+        chmod(app_path($path), 0777);
     }
 
     public function getTemplateContent($path)
@@ -85,5 +88,13 @@ class BaseCommand implements IBaseCommandInterface
             mkdir(app_path($path), 0777, true);
 
         }
+    }
+
+    public function table($header, $data)
+    {
+        $table = new ConsoleTable();
+        $table->setHeaders($header);
+        $table->addRows($data);
+        $table->display();
     }
 }

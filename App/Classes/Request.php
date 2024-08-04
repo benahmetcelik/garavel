@@ -37,12 +37,12 @@ class Request
 
     public function method()
     {
-        return $_SERVER['REQUEST_METHOD'];
+        return $_SERVER['REQUEST_METHOD'] ?? 'GET';
     }
 
     public function url()
     {
-        return $_SERVER['REQUEST_URI'];
+        return $_SERVER['REQUEST_URI'] ?? '/';
     }
 
     public function query(): array

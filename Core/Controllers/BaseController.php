@@ -69,9 +69,8 @@ class BaseController
         $method = new ReflectionMethod($this, $function);
         $parameters = $method->getParameters();
         $prefix = $this->prefix ? '/' . $this->prefix . '/' : '/';
-        $url = $prefix . $this->camelToKebab(
-                $this->removeMethodOnTheFunc($function)
-            );
+
+        $url = $this->convert2url($prefix, $function);
         return [
             'url' => $url,
             'function' => $function,
@@ -83,6 +82,20 @@ class BaseController
             'controller' => get_class($this),
             'full_url' => config('app.url') . $url
         ];
+    }
+
+    public function convert2url($prefix, $function)
+    {
+        $url = $prefix . $this->camelToKebab(
+                $this->removeMethodOnTheFunc($function)
+            );
+        $count = substr_count($url, '//');
+        foreach (range(0, $count) as $item) {
+            $url = str_replace('//', '/', $url);
+        }
+        return $url;
+
+
     }
 
 
