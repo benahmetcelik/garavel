@@ -29,16 +29,19 @@ class RouteCommand extends BaseCommand
     public function run()
     {
         $router = new Router();
-        $routes = $router->getRoutes();
+        $routes = $router->getAllRoutes();
         $rows = [];
         foreach ($routes as $route) {
+
+            $route = (object)$route;
             $rows[] = [
-                $route['method'],
-                $route['url'],
-                $route['function'],
-                $route['controller']
+                $route->method,
+                $route->name,
+                $route->url,
+                is_array($route->callback) ? $route->callback[1] : '',
+                is_array($route->callback) ? $route->callback[0] : ''
             ];
         }
-        $this->table(['Method', 'URL', 'Function', 'Controller'], $rows);
+        $this->table(['Method', 'Name','URL', 'Function', 'Controller'], $rows);
     }
 }

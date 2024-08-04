@@ -23,26 +23,47 @@ class Router
         $this->url = request()->url();
         $this->query = request()->query();
         $this->body = request()->body();
-        $controllersDir = app_path('Controllers');
-        $controllers = scandir($controllersDir);
-        foreach ($controllers as $controller) {
-            if ($controller == '.' || $controller == '..') {
-                continue;
-            }
-            $controllerPath = app_path('Controllers/' . $controller);
-            require_once $controllerPath;
-            $controllerClass = 'App\\Controllers\\' . pathinfo($controller, PATHINFO_FILENAME);
-            if (class_exists($controllerClass)) {
-                $this->routes[] = (new $controllerClass)->getRoutes();
-            }
-        }
         $this->loadStaticRoutes();
     }
 
+    public function addRoute($method, $url, $callback)
+    {
+        return new SingleRoute($this,$method, $url, $callback);
+    }
 
-    public function getRoutes($method = null): array
+    public function setRoute(SingleRoute $route)
+    {
+        $this->routes[] = [
+            'method' => $route->getMethod(),
+            'url' => $route->getUrl(),
+            'callback' => $route->getCallback(),
+            'name' => $route->getName(),
+            'middlewares' => $route->getMiddlewares()
+        ];
+    }
+
+    public function get($url, $callback)
+    {
+        return $this->addRoute('GET', $url, $callback);
+    }
+
+    public function post($url, $callback)
+    {
+        return $this->addRoute('POST', $url, $callback);
+    }
+
+    public function getUniqueRouteName(): string
+    {
+        return uniqid();
+    }
+
+
+    public function getAllRoutes($method = null): array
     {
         $routes = $this->routes;
+        if (empty($routes)) {
+            $routes = $this->loadCustomRoutes();
+        }
         $routes = array_merge(...$routes);
         return array_filter($routes, function ($value) use ($method) {
             $temp = true;
@@ -53,31 +74,68 @@ class Router
         });
     }
 
+    public function loadCustomRoutes()
+    {
+        $routesFiles = [];
+        $files = glob(app_path('Routes/*.php'));
+        foreach ($files as $file) {
+            $routeFile = require $file;
+            $routesFiles[] = $routeFile->getRoutes();
+        }
+        return $routesFiles;
+    }
+
+
+    public function getRoutes()
+    {
+        if (is_null($this->routes)) {
+            $this->routes = $this->loadCustomRoutes();
+        }
+        return $this->routes;
+    }
+
+    public function findRouteByUri($uri)
+    {
+        $routes = $this->getRoutes();
+
+
+        foreach ($routes as $route) {
+            $route = json_encode($route);
+            $route = json_decode($route);
+            foreach ($route as $key => $value) {
+                $subRoute = json_decode(json_encode($value), true);
+                if ($subRoute['url'] == $uri) {
+                    if ($subRoute['method'] == $this->method || $subRoute['method'] == 'ANY'){
+                        return $subRoute;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 
     public function callAction()
     {
-        $routes = $this->getRoutes();
-        $routes = array_filter($routes, function ($route) {
-            return $route['url'] == $this->url && $route['method'] == $this->method;
-        });
-        if (empty($routes)) {
-            $this->response->notFound();
+        $route = $this->findRouteByUri($this->url);
+        if (is_null($route)) {
+            $this->response->notFound()->send();
         }
-        foreach ($routes as $route) {
-            if ($route['url'] == $this->url && $route['method'] == $this->method) {
-                if (array_key_exists('callback', $route)) {
-                    return $route['callback']($this->query, $this->body);
-                }
-                $controller = new $route['controller'];
-                $action = $route['function'];
+        if (array_key_exists('callback', $route)) {
+            if (is_array($route['callback'])){
+                $controller = new $route['callback'][0];
+                $action = $route['callback'][1];
                 return $controller->$action($this->query, $this->body);
+            }else{
+                return $route['callback']($this->query, $this->body);
             }
         }
+        return $this->response->notFound()->send();
     }
 
     protected function loadStaticRoutes()
     {
-        $this->routes[] = [];
+//        $this->routes[] = [];
     }
 
 }

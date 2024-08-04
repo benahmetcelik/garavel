@@ -17,7 +17,12 @@ $handler = new Handler();
 
 try {
     $handler->terminate(function () use ($router) {
-        return $router->callAction();
+        try {
+            return $router->callAction();
+
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     });
 } catch (Exception $e) {
     $handler->log([

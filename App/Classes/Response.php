@@ -66,6 +66,8 @@ class Response
             'status' => $status,
             'message' => $message
         ]);
+        return $this;
+
     }
 
     public function unauthorized($message = 'Unauthorized', $status = 401)
