@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Base;
+namespace Core\Database\Drivers\Base;
 
 class BaseDatabase implements IDatabaseInterface
 {
@@ -45,7 +45,7 @@ class BaseDatabase implements IDatabaseInterface
         try {
             $driver = $this->getConnectionConfigs()['driver'];
             $driver = ucfirst($driver);
-            $class = 'Core\\Database\\' . $driver . '\\' . $driver . 'Connector';
+            $class = 'Core\\Database\\Drivers\\' . $driver . '\\' . $driver . 'Connector';
             if (!class_exists($class)) {
                 throw new \ReflectionException('Class does not exist');
             }

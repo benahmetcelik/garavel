@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Commands\SystemCommands;
+namespace Core\Commands\SystemCommands\Make;
 
 use Core\Commands\Base\BaseCommand;
 

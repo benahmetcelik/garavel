@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Core\Database\Base\BaseDatabase;
+use Core\Database\Drivers\Base\BaseDatabase;
 
 class QueryBuilder extends BaseDatabase
 {
@@ -140,6 +140,12 @@ class QueryBuilder extends BaseDatabase
     public function getSql()
     {
         return $this->query_string;
+    }
+
+
+    public function run($query)
+    {
+        return $this->database->select($query);
     }
 
 

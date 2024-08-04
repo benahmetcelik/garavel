@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Base;
+namespace Core\Database\Drivers\Base;
 
 interface IDatabaseInterface
 {

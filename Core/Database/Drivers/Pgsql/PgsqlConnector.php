@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Pgsql;
+namespace Core\Database\Drivers\Pgsql;
 
 class PgsqlConnector
 {
