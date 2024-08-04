@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\Models\UserModel;
 use Core\Controllers\BaseController;
 use Core\QueryBuilder;
 
@@ -17,10 +18,15 @@ class TestController extends BaseController
      */
     public function getTest()
     {
+        try {
+            $user = (new \App\Models\UserModel)->find(5);
+            return response()->success($user)->send();
+        }catch (\Exception $e) {
+            return response()->error($e->getMessage())->send();
+        }
 
-        $query = QueryBuilder::select(['id', 'name', 'email'],'users')->get();
-
-        return response()->success($query)->send();
+        $user = UserModel::where('id', '=', 1)->get();
+        return response()->success($user)->send();
         return view('pages.home', ['name' => 'Test']);
     }
 

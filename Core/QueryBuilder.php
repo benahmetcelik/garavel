@@ -12,16 +12,26 @@ class QueryBuilder extends BaseDatabase
 
     public $database;
 
+    public $timerStart = 0;
+    public $timerEnd = 0;
+
     /**
      * @throws \Exception
      */
     public function __construct()
     {
         try {
+            $this->timerStart = microtime(true);
             $this->database = $this->findDatabaseClass();
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
+    }
+
+    public function result($result)
+    {
+        $this->time = microtime(true) - $this->timerStart;
+        return $result;
     }
 
     public static function select($full_query_or_columns = '*', $table = null)
@@ -30,7 +40,7 @@ class QueryBuilder extends BaseDatabase
 
         if (is_null($table)) {
             $table = $query->table;
-        }else{
+        } else {
             $query->table = $table;
         }
 
@@ -50,7 +60,6 @@ class QueryBuilder extends BaseDatabase
         } else {
             $query->query_string = 'SELECT ' . $full_query_or_columns . ' FROM ' . $table;
         }
-
         return $query;
     }
 
@@ -63,6 +72,7 @@ class QueryBuilder extends BaseDatabase
 
     public function where($column, $operator, $value = null)
     {
+
         if (is_null($value)) {
             $value = $operator;
             $operator = '=';
@@ -93,17 +103,24 @@ class QueryBuilder extends BaseDatabase
 
     public function first()
     {
-        return $this->database->select($this->query_string)->fetch();
+        return $this->result(
+            $this->database->select($this->query_string)->fetch()
+        );
     }
 
     public function get()
     {
-        return $this->database->select($this->query_string)->fetchAll();
+        return $this->result(
+            $this->database->select($this->query_string)->fetch()
+        );
     }
 
-    public function find($id)
+    public static function find($id)
     {
-        return $this->database->select($this->query_string . ' WHERE id = ' . $id)->fetch();
+        $static = new static();
+        return $static->result(
+            $static->database->select($static->query_string . ' WHERE id = ' . $id)->fetch()
+        );
     }
 
     public function onlyThisColumns($columns = [])
@@ -114,10 +131,16 @@ class QueryBuilder extends BaseDatabase
 
     public function insert($data)
     {
+        $data = array_map(function ($value) {
+            return "'" . $value . "'";
+        }, $data);
         $sql = 'INSERT INTO ' . $this->table . ' (';
         $sql .= implode(',', array_keys($data)) . ') VALUES (';
-        $sql .= implode(',', array_values($data)) . ')';
-        return $this->database->query($sql);
+        $sql .= implode(',', array_values($data)) . ')
+        RETURNING id';
+        return $this->result(
+            $this->database->select($sql)->fetch()
+        );
     }
 
     public function update($data)
@@ -127,13 +150,19 @@ class QueryBuilder extends BaseDatabase
             return $key . ' = ' . $value;
         }, array_keys($data), array_values($data)));
         $sql .= $this->query_string;
-        return $this->database->query($sql);
+
+        return $this->result(
+            $this->database->query($sql)
+        );
     }
 
     public function delete()
     {
         $sql = 'DELETE FROM ' . $this->table . $this->query_string;
-        return $this->database->query($sql);
+
+        return $this->result(
+            $this->database->query($sql)
+        );
 
     }
 
@@ -145,10 +174,10 @@ class QueryBuilder extends BaseDatabase
 
     public function run($query)
     {
-        return $this->database->select($query);
+        return $this->result(
+            $this->database->select($query)
+        );
     }
-
-
 
 
 }
