@@ -1,5 +1,5 @@
 
-# Garavel
+# Maravel
 
 Bu proje habi amaçlı geliştirilmeye başlanmıştır. Yıllardır yazılan laravel projelerinden esinlenilmiş ve çok daha hafif , çalışması için en az config gereksinimi duyan bir yapı oluşturmayı hedefliyorum.
 
@@ -22,13 +22,13 @@ Yapmayı planladıklarım :
 Projeyi klonlayın
 
 ```bash
-  git clone https://github.com/benahmetcelik/garavel.git
+  git clone https://github.com/benahmetcelik/maravel.git
 ```
 
 Proje dizinine gidin
 
 ```bash
-  cd garavel
+  cd maravel
 ```
 
 Docker ile çalıştırın
